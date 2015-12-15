@@ -118,15 +118,6 @@ public class AutoDeploy {
         return null;
     }
 
-    public static void main(String[] args) throws IOException {
-        String sourceWarFile = "/Users/wyj/Documents/g_new.zip";
-        String catalinaHome = "/usr/local/apache-tomcat-8.0.29";
-        String host = "192.168.2.118";
-        String user = "root";
-        String password = "admin";
-        AutoDeploy autoDeploy = new AutoDeploy(host, user, password, sourceWarFile, catalinaHome);
-        autoDeploy.deploy();
-    }
 
     // 文件传输；开启tomcat；启动控制台输出
     public void console() throws Exception {
