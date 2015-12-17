@@ -13,7 +13,6 @@ import java.util.regex.Pattern;
 
 import com.asd.template.shell.Shell;
 
-
 /**
  * 自动部署工具
  * 
@@ -120,7 +119,6 @@ public class AutoDeploy {
         return null;
     }
 
-
     // 文件传输；开启tomcat；启动控制台输出
     public void console() throws Exception {
 
@@ -139,6 +137,11 @@ public class AutoDeploy {
 
         String cmd = String.format("tail -f %s\n", loggerFile);
         shell.shell(new ByteArrayInputStream(cmd.getBytes()), System.out);
+    }
+
+    public static void main(String[] args)throws Exception {
+        new AutoDeploy("192.168.40.43", "root", "admin", "/Users/wyj/Documents/g_new/demo-api/target/demo-api-0.0.1-SNAPSHOT.war",
+                "/usr/local/apache-tomcat-8.0.29").redeploy();;
     }
 
 }

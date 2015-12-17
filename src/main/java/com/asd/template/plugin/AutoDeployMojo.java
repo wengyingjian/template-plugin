@@ -118,7 +118,7 @@ public class AutoDeployMojo extends AbstractMojo {
             System.out.println("only war packaging project supports autoDeploy!");
             return;
         }
-        
+
         String sourceWarFile = new StringBuilder(buildDir).append("/").append(fileName).append(".").append(packaging).toString();
         System.out.println("target package file is :" + sourceWarFile);
         AutoDeploy autoDeploy = null;
@@ -128,14 +128,13 @@ public class AutoDeployMojo extends AbstractMojo {
             autoDeploy = new AutoDeploy(host, user, password, sourceWarFile, catalinaHome, loggerFile);
         }
         try {
-//            if (DEPLOY_MODE_REDEPLOY.equals(deployMode)) {
-//                System.out.println("deploying...");
-//                autoDeploy.console();
-//            } else {
-//                System.out.println("redeploying...");
-//                autoDeploy.redeploy();
-//            }
-            autoDeploy.deploy();
+            if (DEPLOY_MODE_REDEPLOY.equals(deployMode)) {
+                System.out.println("deploying...");
+                autoDeploy.console();
+            } else {
+                System.out.println("redeploying...");
+                autoDeploy.redeploy();
+            }
         } catch (Exception e) {
             e.printStackTrace();
             throw new MojoExecutionException(e.getMessage());
