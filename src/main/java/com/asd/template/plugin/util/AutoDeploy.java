@@ -10,7 +10,9 @@ import java.io.PipedOutputStream;
 import java.io.PrintWriter;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+
 import com.asd.template.shell.Shell;
+
 
 /**
  * 自动部署工具
@@ -125,7 +127,7 @@ public class AutoDeploy {
         Shell shell = new Shell(host, user, password);
         shell.sftp(sourceWarFile, catalinaHome + "/webapps/");
 
-        String cmd = String.format("%s/bin/startup.sh\ntail -f %s", catalinaHome, loggerFile);
+        String cmd = String.format("%s/bin/startup.sh\ntail -f %s\n", catalinaHome, loggerFile);
         shell.shell(new ByteArrayInputStream(cmd.getBytes()), System.out);
 
     }
@@ -135,7 +137,7 @@ public class AutoDeploy {
         Shell shell = new Shell(host, user, password);
         shell.sftp(sourceWarFile, catalinaHome + "/webapps/");
 
-        String cmd = String.format("tail -f %s", loggerFile);
+        String cmd = String.format("tail -f %s\n", loggerFile);
         shell.shell(new ByteArrayInputStream(cmd.getBytes()), System.out);
     }
 
